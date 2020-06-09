@@ -18,7 +18,7 @@ public class FileLifecycle extends Lifecycle {
     private final RankUpPlugin plugin;
     private final File dataFolder;
     private File configFile;
-    private File rankTypeFolder;
+    private File rankFolder;
     private FileConfiguration configuration;
 
     public FileLifecycle(RankUpPlugin plugin) {
@@ -41,10 +41,10 @@ public class FileLifecycle extends Lifecycle {
             copyResource("config.yml", configFile);
         configuration = YamlConfiguration.loadConfiguration(configFile);
 
-        rankTypeFolder = new File(dataFolder, "ranks/");
-        if(!rankTypeFolder.exists()) {
-            rankTypeFolder.mkdirs();
-            copyResource("_example.yml", new File(rankTypeFolder, "_example.yml"));
+        rankFolder = new File(dataFolder, "ranks/");
+        if(!rankFolder.exists()) {
+            rankFolder.mkdirs();
+            copyResource("_example.yml", new File(rankFolder, "_example.yml"));
         }
 
     }
