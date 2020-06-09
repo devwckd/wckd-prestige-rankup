@@ -5,6 +5,7 @@ import co.wckd.boilerplate.adapter.AdapterImpl;
 import co.wckd.boilerplate.adapter.CSToISAdapter;
 import co.wckd.boilerplate.plugin.BoilerplatePlugin;
 import lombok.Getter;
+import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;
 import me.devwckd.prestigerankup.lifecycle.FileLifecycle;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
@@ -19,11 +20,15 @@ public class RankUpPlugin extends BoilerplatePlugin {
     @Override
     public void load() {
         adapter = new AdapterImpl();
-        adapter.registerAdapter(MemorySection.class, ItemStack.class, new CSToISAdapter());
+        adapter.registerAdapter(MemorySection.class, ItemStack.class, new CSToIsExtendedAdapter());
     }
 
     @Override
     public void enable() {
     }
 
+
+    public static RankUpPlugin getInstance() {
+        return getPlugin(RankUpPlugin.class);
+    }
 }

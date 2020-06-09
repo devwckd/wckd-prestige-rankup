@@ -19,6 +19,7 @@ public class Rank {
     private final int position;
     private final String id;
     private final String name;
+    private final double price;
 
     private final ItemStack icon;
     private final ItemStack completedIcon;
