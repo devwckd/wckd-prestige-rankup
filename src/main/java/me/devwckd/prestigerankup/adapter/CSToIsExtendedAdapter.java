@@ -7,13 +7,11 @@ import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.lang.reflect.Field;
-import java.util.UUID;
-
 public class CSToIsExtendedAdapter extends CSToISAdapter {
 
     @Override
     public ItemStack adapt(MemorySection from) {
+
         ItemStack adapted = super.adapt(from);
         if(adapted == null) return null;
 
