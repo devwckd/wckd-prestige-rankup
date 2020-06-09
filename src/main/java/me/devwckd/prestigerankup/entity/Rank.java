@@ -1,4 +1,4 @@
-package me.devwckd.prestigerankup.lifecycle.entity;
+package me.devwckd.prestigerankup.entity;
 
 import com.googlecode.cqengine.attribute.Attribute;
 import lombok.Builder;
