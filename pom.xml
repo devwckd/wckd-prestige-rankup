@@ -69,7 +69,7 @@
         <dependency>
             <groupId>com.github.Bozo-Inc</groupId>
             <artifactId>wckd-boilerplate</artifactId>
-            <version>a643656a52</version>
+            <version>2dbb77c955494a26698156358b477ed48294fb1c</version>
         </dependency>
         <dependency>
             <groupId>com.github.SaiintBrisson</groupId>
