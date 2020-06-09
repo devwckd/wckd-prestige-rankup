@@ -30,7 +30,7 @@ public class RankLifecycle extends Lifecycle {
     private void loadRanks() {
         for (File file : rankFolder.listFiles()) {
 
-            Rank rank = adapter.adapt(adapter, File.class, Rank.class);
+            Rank rank = adapter.adapt(file, File.class, Rank.class);
             if(rank == null) continue;
 
             // TODO: put rank on controller
