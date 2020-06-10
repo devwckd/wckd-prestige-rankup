@@ -61,9 +61,16 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.0.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.googlecode.cqengine</groupId>
             <artifactId>cqengine</artifactId>
             <version>3.4.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -75,11 +82,13 @@
             <groupId>com.github.Bozo-Inc</groupId>
             <artifactId>wckd-boilerplate</artifactId>
             <version>2dbb77c955494a26698156358b477ed48294fb1c</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.SaiintBrisson</groupId>
             <artifactId>command-framework</artifactId>
             <version>eed43b62e8</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

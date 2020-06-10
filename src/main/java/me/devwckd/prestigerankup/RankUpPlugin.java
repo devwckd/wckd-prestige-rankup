@@ -29,7 +29,6 @@ public class RankUpPlugin extends BoilerplatePlugin {
     public void enable() {
     }
 
-
     public static RankUpPlugin getInstance() {
         return getPlugin(RankUpPlugin.class);
     }
