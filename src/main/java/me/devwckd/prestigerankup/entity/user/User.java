@@ -16,7 +16,7 @@ public class User {
     private final UUID uuid;
     private final String lowercaseNickname;
 
-    private int rankPosition;
-    private int prestige;
+    private int rankPosition = 0;
+    private int prestige = 0;
 
 }
