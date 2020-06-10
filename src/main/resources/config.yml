@@ -1,0 +1,8 @@
+mongo_connection:
+
+  hostname: ""
+  port: 27017
+  srv: false
+  username: ""
+  password: ""
+  database: ""
