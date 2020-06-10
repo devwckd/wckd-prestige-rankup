@@ -13,8 +13,8 @@ import static com.googlecode.cqengine.query.QueryFactory.*;
 @Builder
 public class Rank {
 
-    public static final Attribute<Rank, Integer> RANK_POSITION = attribute("rankPosition", Rank::getPosition);
-    public static final Attribute<Rank, String> RANK_ID = attribute("rankId", Rank::getId);
+    public static final Attribute<Rank, Integer> POSITION = attribute("rankPosition", Rank::getPosition);
+    public static final Attribute<Rank, String> ID = attribute("rankId", Rank::getId);
 
     private final int position;
     private final String id;
