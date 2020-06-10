@@ -1,10 +1,7 @@
-package me.devwckd.prestigerankup.entity;
+package me.devwckd.prestigerankup.entity.rank;
 
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
-import com.googlecode.cqengine.index.navigable.NavigableIndex;
-import com.googlecode.cqengine.query.Query;
-import com.googlecode.cqengine.query.QueryFactory;
 
 import static com.googlecode.cqengine.index.navigable.NavigableIndex.*;
 import static com.googlecode.cqengine.query.QueryFactory.*;

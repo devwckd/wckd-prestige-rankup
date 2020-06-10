@@ -1,4 +1,4 @@
-package me.devwckd.prestigerankup.entity;
+package me.devwckd.prestigerankup.entity.rank;
 
 import com.googlecode.cqengine.attribute.Attribute;
 import lombok.Builder;

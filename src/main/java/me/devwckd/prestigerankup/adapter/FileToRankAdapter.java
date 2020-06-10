@@ -3,7 +3,7 @@ package me.devwckd.prestigerankup.adapter;
 import co.wckd.boilerplate.adapter.Adapter;
 import co.wckd.boilerplate.adapter.ObjectAdapter;
 import me.devwckd.prestigerankup.RankUpPlugin;
-import me.devwckd.prestigerankup.entity.Rank;
+import me.devwckd.prestigerankup.entity.rank.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;

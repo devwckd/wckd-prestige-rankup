@@ -2,7 +2,6 @@ package me.devwckd.prestigerankup;
 
 import co.wckd.boilerplate.adapter.Adapter;
 import co.wckd.boilerplate.adapter.AdapterImpl;
-import co.wckd.boilerplate.adapter.CSToISAdapter;
 import co.wckd.boilerplate.plugin.BoilerplatePlugin;
 import lombok.Getter;
 import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;

@@ -3,8 +3,8 @@ package me.devwckd.prestigerankup.lifecycle;
 import co.wckd.boilerplate.adapter.Adapter;
 import co.wckd.boilerplate.lifecycle.Lifecycle;
 import me.devwckd.prestigerankup.RankUpPlugin;
-import me.devwckd.prestigerankup.entity.Rank;
-import me.devwckd.prestigerankup.entity.RankController;
+import me.devwckd.prestigerankup.entity.rank.Rank;
+import me.devwckd.prestigerankup.entity.rank.RankController;
 import org.bukkit.Bukkit;
 
 import java.io.File;
