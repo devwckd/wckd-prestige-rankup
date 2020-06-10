@@ -46,7 +46,7 @@ public class MongoDataProvider {
 		StringBuilder string = new StringBuilder("mongodb" + (srv ? "+srv" : "") + "://");
 		
 		if (user != null && password != null && database != null) {
-			string.append(user + ":" + password + "@");
+			string.append(user).append(":").append(password).append("@");
 		}
 		
 		string.append(host);
@@ -56,7 +56,7 @@ public class MongoDataProvider {
 		}
 		
 		if (user != null && password != null && database != null) {
-			string.append("/" + database);
+			string.append("/").append(database);
 		}
 		
 		CodecRegistry pojoCodecRegistry = fromRegistries(
