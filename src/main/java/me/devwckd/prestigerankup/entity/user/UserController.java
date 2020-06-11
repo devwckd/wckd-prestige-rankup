@@ -51,6 +51,7 @@ public class UserController {
         User user = userStorage.getByUUID(uuid);
         if(user == null) {
             user = new User(uuid, player.getName().toLowerCase());
+            requestUpdate(user);
         }
 
         users.add(user);
@@ -59,6 +60,7 @@ public class UserController {
     public void removeFromMemory(Player player) {
         User user = getByUUID(player.getUniqueId());
         if(user == null) return;
+        requestUpdate(user);
         users.remove(user);
     }
 

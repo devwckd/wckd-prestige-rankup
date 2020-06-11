@@ -2,3 +2,5 @@ name: WickedPrestigeRankUp
 author: WickedDev
 version: 1.0-indev
 main: me.devwckd.prestigerankup.RankUpPlugin
+
+depend: [Vault]

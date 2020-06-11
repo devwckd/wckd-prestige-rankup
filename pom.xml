@@ -79,6 +79,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.Bozo-Inc</groupId>
             <artifactId>wckd-boilerplate</artifactId>
             <version>2dbb77c955494a26698156358b477ed48294fb1c</version>

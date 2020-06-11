@@ -12,8 +12,10 @@ import me.devwckd.prestigerankup.lifecycle.DatabaseLifecycle;
 import me.devwckd.prestigerankup.lifecycle.FileLifecycle;
 import me.devwckd.prestigerankup.lifecycle.RankLifecycle;
 import me.devwckd.prestigerankup.lifecycle.UserLifecycle;
+import me.devwckd.prestigerankup.listener.TrafficListener;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.PluginManager;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -49,6 +51,12 @@ public class RankUpPlugin extends BoilerplatePlugin {
 
     @Override
     public void enable() {
+        registerListeners();
+    }
+
+    private void registerListeners() {
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new TrafficListener(this), this);
     }
 
     public static RankUpPlugin getInstance() {
