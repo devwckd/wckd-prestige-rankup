@@ -45,10 +45,10 @@ public class UserController {
         UUID uuid = player.getUniqueId();
 
         if(getByUUID(uuid) != null) {
-
+            removeFromMemory(player);
         }
 
-        User user = userStorage.getByID(uuid);
+        User user = userStorage.getByUUID(uuid);
         if(user == null) {
             user = new User(uuid, player.getName().toLowerCase());
         }
@@ -62,6 +62,18 @@ public class UserController {
         users.remove(user);
     }
 
+    public void requestUpdate(Player player) {
+        UUID uuid = player.getUniqueId();
 
+        User user = getByUUID(uuid);
+        if(user == null) user = userStorage.getByUUID(uuid);
+        if(user == null) return;
+
+        requestUpdate(user);
+    }
+
+    public void requestUpdate(User user) {
+        userStorage.requestUpdate(user);
+    }
 
 }
