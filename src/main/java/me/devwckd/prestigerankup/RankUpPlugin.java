@@ -8,10 +8,7 @@ import lombok.Getter;
 import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;
 import me.devwckd.prestigerankup.adapter.FileToRankAdapter;
 import me.devwckd.prestigerankup.entity.rank.Rank;
-import me.devwckd.prestigerankup.lifecycle.DatabaseLifecycle;
-import me.devwckd.prestigerankup.lifecycle.FileLifecycle;
-import me.devwckd.prestigerankup.lifecycle.RankLifecycle;
-import me.devwckd.prestigerankup.lifecycle.UserLifecycle;
+import me.devwckd.prestigerankup.lifecycle.*;
 import me.devwckd.prestigerankup.listener.TrafficListener;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
@@ -27,9 +24,10 @@ import java.util.concurrent.TimeUnit;
 public class RankUpPlugin extends BoilerplatePlugin {
 
     private final FileLifecycle fileLifecycle = lifecycle(new FileLifecycle(this), 0);
-    private final DatabaseLifecycle databaseLifecycle = lifecycle(new DatabaseLifecycle(this), 1);
-    private final RankLifecycle rankLifecycle = lifecycle(new RankLifecycle(this), 2);
-    private final UserLifecycle userLifecycle = lifecycle(new UserLifecycle(this), 3);
+    private final VaultLifecycle vaultLifecycle = lifecycle(new VaultLifecycle(this), 1);
+    private final DatabaseLifecycle databaseLifecycle = lifecycle(new DatabaseLifecycle(this), 2);
+    private final RankLifecycle rankLifecycle = lifecycle(new RankLifecycle(this), 3);
+    private final UserLifecycle userLifecycle = lifecycle(new UserLifecycle(this), 4);
 
     private Adapter adapter;
     private ExecutorService executorService;
