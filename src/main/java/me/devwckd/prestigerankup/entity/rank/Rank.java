@@ -3,6 +3,9 @@ package me.devwckd.prestigerankup.entity.rank;
 import com.googlecode.cqengine.attribute.Attribute;
 import lombok.Builder;
 import lombok.Data;
+import me.devwckd.prestigerankup.entity.user.User;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -26,5 +29,29 @@ public class Rank {
 
     private final List<String> commandsIn;
     private final List<String> commandsOut;
+
+    public void commandsIn(Player player) {
+
+        for(String command : commandsIn) {
+            command = command
+                    .replace("{player}", player.getName())
+                    .replace("{name}", name);
+
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+        }
+
+    }
+
+    public void commandsOut(Player player) {
+
+        for(String command : commandsOut) {
+            command = command
+                    .replace("{player}", player.getName())
+                    .replace("{name}", name);
+
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+        }
+
+    }
 
 }

@@ -7,9 +7,11 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
 import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;
 import me.devwckd.prestigerankup.adapter.FileToRankAdapter;
+import me.devwckd.prestigerankup.command.RankUpCommand;
 import me.devwckd.prestigerankup.entity.rank.Rank;
 import me.devwckd.prestigerankup.lifecycle.*;
 import me.devwckd.prestigerankup.listener.TrafficListener;
+import me.saiintbrisson.commands.CommandFrame;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
@@ -50,11 +52,26 @@ public class RankUpPlugin extends BoilerplatePlugin {
     @Override
     public void enable() {
         registerListeners();
+        registerCommands();
     }
 
     private void registerListeners() {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new TrafficListener(this), this);
+    }
+
+    private void registerCommands() {
+        CommandFrame commandFrame = new CommandFrame(this);
+        commandFrame.setService(executorService);
+
+        commandFrame.setUsageMessage("&cUse: {usage}");
+        commandFrame.setLackPermMessage("&cSem permissão.");
+        commandFrame.setErrorMessage("&cAlgo de errado ocorreu!");
+        commandFrame.setInGameOnlyMessage("Este comando só pode ser utilizado in-game");
+
+        commandFrame.registerCommands(
+                new RankUpCommand(this)
+        );
     }
 
     public static RankUpPlugin getInstance() {
