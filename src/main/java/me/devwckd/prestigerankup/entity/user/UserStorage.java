@@ -20,7 +20,7 @@ public class UserStorage {
         this.updateQueue = new ConcurrentLinkedQueue<>();
     }
 
-    public User getByID(UUID uuid) {
+    public User getByUUID(UUID uuid) {
         return userCollection.find(eq("uuid", uuid)).first();
     }
 
