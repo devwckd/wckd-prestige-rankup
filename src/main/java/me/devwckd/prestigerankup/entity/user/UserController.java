@@ -2,6 +2,7 @@ package me.devwckd.prestigerankup.entity.user;
 
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
+import lombok.Getter;
 import me.devwckd.prestigerankup.database.MongoDataProvider;
 import org.bukkit.entity.Player;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 import static com.googlecode.cqengine.index.navigable.NavigableIndex.*;
 import static com.googlecode.cqengine.query.QueryFactory.*;
 
+@Getter
 public class UserController {
 
     private final IndexedCollection<User> users;
@@ -59,6 +61,7 @@ public class UserController {
         if(user == null) return;
         users.remove(user);
     }
+
 
 
 }
