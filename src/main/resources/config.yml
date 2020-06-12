@@ -34,3 +34,15 @@ messages:
     - " &aVocê upou de rank com sucesso! {previous_name} -> {actual_name}"
   success_prestige:
     - " &aVocê deu prestigio com sucesso! Novo prestígio: {prestige}"
+
+ranks_gui:
+
+  icon:
+    name: "&c{pos} - {name}"
+    lore:
+      - "&cprice: {price}"
+
+  completed_icon:
+    name: "&a{pos} - {name}"
+      lore:
+        - "&acompleted"
