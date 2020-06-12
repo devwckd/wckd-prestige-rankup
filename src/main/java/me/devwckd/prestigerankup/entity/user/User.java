@@ -20,6 +20,10 @@ public class User {
     private int rankPosition = 0;
     private int prestige = 0;
 
+    public void increasePrestige() {
+        prestige++;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

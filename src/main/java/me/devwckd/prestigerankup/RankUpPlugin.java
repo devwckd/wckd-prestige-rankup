@@ -7,6 +7,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
 import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;
 import me.devwckd.prestigerankup.adapter.FileToRankAdapter;
+import me.devwckd.prestigerankup.command.PrestigeCommand;
 import me.devwckd.prestigerankup.command.RankUpCommand;
 import me.devwckd.prestigerankup.entity.rank.Rank;
 import me.devwckd.prestigerankup.lifecycle.*;
@@ -70,7 +71,8 @@ public class RankUpPlugin extends BoilerplatePlugin {
         commandFrame.setInGameOnlyMessage("Este comando só pode ser utilizado in-game");
 
         commandFrame.registerCommands(
-                new RankUpCommand(this)
+                new RankUpCommand(this),
+                new PrestigeCommand(this)
         );
     }
 

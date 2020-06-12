@@ -10,14 +10,14 @@ import me.saiintbrisson.commands.annotations.Command;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
 
-public class RankUpCommand {
+public class PrestigeCommand {
 
     private final RankUpPlugin plugin;
     private final Economy economy;
     private final RankController rankController;
     private final UserController userController;
 
-    public RankUpCommand(RankUpPlugin plugin) {
+    public PrestigeCommand(RankUpPlugin plugin) {
         this.plugin = plugin;
         this.economy = plugin.getVaultLifecycle().getEconomy();
         this.rankController = plugin.getRankLifecycle().getRankController();
@@ -47,24 +47,22 @@ public class RankUpCommand {
         if(actualRank == null)
             throw new NullPointerException("rank is null!");
 
-        Rank nextRank = rankController.getByPosition(rankPosition + 1);
-        if(nextRank == null) {
-            // User is in the last rank.
+        Rank firstRank = rankController.getByPosition(0);
+        if(firstRank == null)
+            throw new NullPointerException("firstRank is null!");
+
+        if(rankController.getByPosition(rankPosition + 1) != null) {
+            // User is isn't in the last rank.
             return;
         }
 
-        double price = nextRank.getPrice();
-        if (economy.getBalance(player) < price) {
-            // Player has no money to rank up.
-            return;
-        }
-
-        economy.withdrawPlayer(player, price);
-        user.setRankPosition(nextRank.getPosition());
+        user.increasePrestige();
+        user.setRankPosition(0);
 
         actualRank.commandsOut(player);
-        nextRank.commandsIn(player);
+        firstRank.commandsIn(player);
 
         userController.requestUpdate(user);
+
     }
 }
