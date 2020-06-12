@@ -6,3 +6,31 @@ mongo_connection:
   username: ""
   password: ""
   database: ""
+
+config:
+
+  prestige_constant: 0.2
+  prestige_commands:
+    - "say {player}, vc sabia que o victu é corno ?"
+
+messages:
+
+  no_perm:
+    - " &cSem permissão."
+  usage:
+    - " &cUse: {usage}"
+  fatal_error:
+    - " &cOps! Algo de errado acontece. Contate um administrador"
+
+  not_in_ranking_system:
+    - " &cVocê não pode upar de rank."
+  last_rank:
+    - " &cVocê está no ultimo rank! digite &e/prestigio &cpara resetar."
+  not_last_rank:
+    - " &cVocê não está no ultimo rank."
+  no_money:
+    - " &cVocê não tem coins o suficiente para upar de rank. Dinheiro necessário: {coins}"
+  success_rank_up:
+    - " &aVocê upou de rank com sucesso! {previous_name} -> {actual_name}"
+  success_prestige:
+    - " &aVocê deu prestigio com sucesso! Novo prestígio: {prestige}"

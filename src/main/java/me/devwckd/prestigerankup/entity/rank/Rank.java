@@ -23,7 +23,8 @@ public class Rank implements PaginatedItem {
     public static final Attribute<Rank, Integer> POSITION = attribute("rankPosition", Rank::getPosition);
     public static final Attribute<Rank, String> ID = attribute("rankId", Rank::getId);
 
-    private static final UserController userController = RankUpPlugin.getInstance().getUserLifecycle().getUserController();
+    private static final UserController USER_CONTROLLER = RankUpPlugin.getInstance().getUserLifecycle().getUserController();
+    private static final double PRESTIGE_CONSTANT = RankUpPlugin.getInstance().getFileLifecycle().getConfiguration().getDouble("config.prestige_constant");
 
     private final int position;
     private final String id;
@@ -35,6 +36,10 @@ public class Rank implements PaginatedItem {
 
     private final List<String> commandsIn;
     private final List<String> commandsOut;
+
+    public double getPrice(int prestige) {
+        return price + ( price * ( PRESTIGE_CONSTANT * prestige ) );
+    }
 
     public void commandsIn(Player player) {
 
@@ -63,7 +68,7 @@ public class Rank implements PaginatedItem {
     @Override
     public ItemStack toItemStack(Player player, PaginatedInvHolder paginatedInvHolder) {
 
-        User user = userController.getByUUID(player.getUniqueId());
+        User user = USER_CONTROLLER.getByUUID(player.getUniqueId());
         if(user == null)
             throw new NullPointerException("user is null!");
 
@@ -73,4 +78,5 @@ public class Rank implements PaginatedItem {
             return icon;
 
     }
+
 }

@@ -5,27 +5,33 @@ import me.devwckd.prestigerankup.entity.rank.Rank;
 import me.devwckd.prestigerankup.entity.rank.RankController;
 import me.devwckd.prestigerankup.entity.user.User;
 import me.devwckd.prestigerankup.entity.user.UserController;
+import me.devwckd.prestigerankup.lifecycle.FileLifecycle;
 import me.saiintbrisson.commands.Execution;
 import me.saiintbrisson.commands.annotations.Command;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class PrestigeCommand {
 
     private final RankUpPlugin plugin;
-    private final Economy economy;
+    private final FileLifecycle fileLifecycle;
     private final RankController rankController;
     private final UserController userController;
+    private final List<String> prestigeCommands;
 
     public PrestigeCommand(RankUpPlugin plugin) {
         this.plugin = plugin;
-        this.economy = plugin.getVaultLifecycle().getEconomy();
+        this.fileLifecycle = plugin.getFileLifecycle();
         this.rankController = plugin.getRankLifecycle().getRankController();
         this.userController = plugin.getUserLifecycle().getUserController();
+        this.prestigeCommands = plugin.getFileLifecycle().getConfiguration().getStringList("config.prestige_commands");
     }
 
     @Command(
-            name = "rankup",
+            name = "prestige",
             inGameOnly = true,
             async = true
     )
@@ -39,7 +45,7 @@ public class PrestigeCommand {
 
         int rankPosition = user.getRankPosition();
         if(rankPosition == -1) {
-            // User is removed from the ranking system.
+            player.sendMessage(fileLifecycle.getMessage("not_in_ranking_system"));
             return;
         }
 
@@ -52,7 +58,7 @@ public class PrestigeCommand {
             throw new NullPointerException("firstRank is null!");
 
         if(rankController.getByPosition(rankPosition + 1) != null) {
-            // User is isn't in the last rank.
+            player.sendMessage(fileLifecycle.getMessage("not_last_rank"));
             return;
         }
 
@@ -63,6 +69,17 @@ public class PrestigeCommand {
         firstRank.commandsIn(player);
 
         userController.requestUpdate(user);
+
+        for (String prestigeCommand : prestigeCommands) {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), prestigeCommand
+                    .replace("{player}", player.getName()).replace("{prestige}", user.getPrestige() + "")
+            );
+        }
+
+        String successPrestige = fileLifecycle.getMessage("success_prestige");
+        if(successPrestige == null) return;
+
+        player.sendMessage(successPrestige.replace("{prestige}", user.getPrestige() + ""));
 
     }
 }

@@ -4,6 +4,7 @@ import co.wckd.boilerplate.lifecycle.Lifecycle;
 import lombok.Getter;
 import me.devwckd.prestigerankup.RankUpPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -71,4 +72,11 @@ public class FileLifecycle extends Lifecycle {
             plugin.disablePlugin();
         }
     }
+
+    public String getMessage(String path) {
+        return ChatColor.translateAlternateColorCodes('&',
+                    String.join("\n", configuration.getStringList("messages." + path))
+                );
+    }
+
 }

@@ -65,9 +65,9 @@ public class RankUpPlugin extends BoilerplatePlugin {
         CommandFrame commandFrame = new CommandFrame(this);
         commandFrame.setService(executorService);
 
-        commandFrame.setUsageMessage("&cUse: {usage}");
-        commandFrame.setLackPermMessage("&cSem permissão.");
-        commandFrame.setErrorMessage("&cAlgo de errado ocorreu!");
+        commandFrame.setLackPermMessage(fileLifecycle.getMessage("no_perm"));
+        commandFrame.setUsageMessage(fileLifecycle.getMessage("usage"));
+        commandFrame.setErrorMessage(fileLifecycle.getMessage("fatal_error"));
         commandFrame.setInGameOnlyMessage("Este comando só pode ser utilizado in-game");
 
         commandFrame.registerCommands(
