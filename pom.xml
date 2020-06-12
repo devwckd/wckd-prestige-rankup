@@ -96,6 +96,12 @@
             <version>eed43b62e8</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.SaiintBrisson</groupId>
+            <artifactId>inventory-framework</artifactId>
+            <version>ddb94b51c7</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>
