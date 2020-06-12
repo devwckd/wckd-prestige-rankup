@@ -1,2 +1,4 @@
 /.idea/
 /wckd-prestige-rankup.iml
+/target/
+/dependency-reduced-pom.xml

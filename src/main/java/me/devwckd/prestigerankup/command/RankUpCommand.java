@@ -6,7 +6,7 @@ import me.devwckd.prestigerankup.entity.rank.RankController;
 import me.devwckd.prestigerankup.entity.user.User;
 import me.devwckd.prestigerankup.entity.user.UserController;
 import me.devwckd.prestigerankup.lifecycle.FileLifecycle;
-import me.devwckd.prestigerankup.util.Formats;
+import me.devwckd.prestigerankup.util.FormatUtils;
 import me.saiintbrisson.commands.Execution;
 import me.saiintbrisson.commands.annotations.Command;
 import net.milkbowl.vault.economy.Economy;
@@ -65,7 +65,7 @@ public class RankUpCommand {
         if (economy.getBalance(player) < price) {
             player.sendMessage(
                     fileLifecycle.getMessage("no_money")
-                            .replace("{price}", Formats.apply(price))
+                            .replace("{price}", FormatUtils.apply(price))
             );
             return;
         }

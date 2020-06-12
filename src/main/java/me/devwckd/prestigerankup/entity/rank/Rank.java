@@ -6,6 +6,7 @@ import lombok.Data;
 import me.devwckd.prestigerankup.RankUpPlugin;
 import me.devwckd.prestigerankup.entity.user.User;
 import me.devwckd.prestigerankup.entity.user.UserController;
+import me.devwckd.prestigerankup.util.StackUtils;
 import me.saiintbrisson.inventory.paginator.PaginatedInvHolder;
 import me.saiintbrisson.inventory.paginator.PaginatedItem;
 import org.bukkit.Bukkit;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 import static com.googlecode.cqengine.query.QueryFactory.*;
+import static me.devwckd.prestigerankup.util.StackUtils.*;
 
 @Data
 @Builder
@@ -73,9 +75,9 @@ public class Rank implements PaginatedItem {
             throw new NullPointerException("user is null!");
 
         if(user.getRankPosition() <= position)
-            return completedIcon;
+            return applyCompletedIcon(completedIcon, user, this);
         else
-            return icon;
+            return applyIcon(completedIcon, user, this);
 
     }
 

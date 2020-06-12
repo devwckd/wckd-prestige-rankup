@@ -2,14 +2,14 @@ package me.devwckd.prestigerankup.util;
 
 import java.text.DecimalFormat;
 
-public class Formats {
+public class FormatUtils {
 
     private static final String[] MONEY_FORMATS =
             new String[] { "M", "B", "T", "Q", "QQ", "S", "SS", "OC", "N", "D", "UN", "DD", "TR", "QT", "QN", "SD", "SPD", "OD", "ND", "VG" };
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
 
-    private Formats() {}
+    private FormatUtils() {}
 
     public static String apply(double amount) {
 
