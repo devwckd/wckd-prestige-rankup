@@ -1,12 +1,10 @@
 package me.devwckd.prestigerankup.entity.rank;
 
-import com.googlecode.cqengine.attribute.Attribute;
 import lombok.Builder;
 import lombok.Data;
 import me.devwckd.prestigerankup.RankUpPlugin;
 import me.devwckd.prestigerankup.entity.user.User;
 import me.devwckd.prestigerankup.entity.user.UserController;
-import me.devwckd.prestigerankup.util.StackUtils;
 import me.saiintbrisson.inventory.paginator.PaginatedInvHolder;
 import me.saiintbrisson.inventory.paginator.PaginatedItem;
 import org.bukkit.Bukkit;
@@ -15,15 +13,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-import static com.googlecode.cqengine.query.QueryFactory.*;
-import static me.devwckd.prestigerankup.util.StackUtils.*;
+import static me.devwckd.prestigerankup.util.StackUtils.applyCompletedIcon;
+import static me.devwckd.prestigerankup.util.StackUtils.applyIcon;
 
 @Data
 @Builder
 public class Rank implements PaginatedItem {
-
-    public static final Attribute<Rank, Integer> POSITION = attribute("rankPosition", Rank::getPosition);
-    public static final Attribute<Rank, String> ID = attribute("rankId", Rank::getId);
 
     private static final UserController USER_CONTROLLER = RankUpPlugin.getInstance().getUserLifecycle().getUserController();
     private static final double PRESTIGE_CONSTANT = RankUpPlugin.getInstance().getFileLifecycle().getConfiguration().getDouble("config.prestige_constant");
