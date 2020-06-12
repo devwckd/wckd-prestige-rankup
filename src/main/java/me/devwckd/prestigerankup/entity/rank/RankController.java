@@ -2,34 +2,30 @@ package me.devwckd.prestigerankup.entity.rank;
 
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
+import lombok.Getter;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.googlecode.cqengine.index.navigable.NavigableIndex.*;
 import static com.googlecode.cqengine.query.QueryFactory.*;
 
+@Getter
 public class RankController {
 
-    private final IndexedCollection<Rank> ranks;
+    private final List<Rank> ranks;
 
     public RankController() {
-        ranks = new ConcurrentIndexedCollection<>();
-        ranks.addIndex(onAttribute(Rank.POSITION));
-        ranks.addIndex(onAttribute(Rank.ID));
+        ranks = new ArrayList<>();
     }
 
     public Rank getByPosition(int position) {
-        try {
-            return ranks.retrieve(equal(Rank.POSITION, position)).uniqueResult();
-        } catch (Exception $) {
-            return null;
-        }
+        return ranks.get(position);
     }
 
     public Rank getByID(String id) {
-        try {
-            return ranks.retrieve(equal(Rank.ID, id.toLowerCase())).uniqueResult();
-        } catch (Exception $) {
-            return null;
-        }
+        throw new NotImplementedException();
     }
 
     public void insert(Rank rank) {
@@ -39,5 +35,6 @@ public class RankController {
     public boolean isEmpty() {
         return ranks.isEmpty();
     }
+
 
 }
