@@ -47,6 +47,15 @@ public class ReflectionsUtils {
         }
     }
 
+    public static Method getReflectionMethod(Class clazz, String methodName, Class... parameters) {
+        try {
+            return clazz.getMethod(methodName, parameters);
+        } catch (Exception exception) {
+            Bukkit.getConsoleSender().sendMessage("[WickedRankUp] Failed to get method " + methodName + " on class " + clazz.getName() + ".");
+            return null;
+        }
+    }
+
     public static Object invokeReflectionMethod(Method method, Object object, Object... params) {
         try {
             return method.invoke(object, params);
@@ -58,7 +67,7 @@ public class ReflectionsUtils {
 
     public static Field getReflectionDeclaredField(Class clazz, String fieldName) {
         try {
-            return clazz.getField(fieldName);
+            return clazz.getDeclaredField(fieldName);
         } catch (Exception exception) {
             Bukkit.getConsoleSender().sendMessage("[WickedRankUp] Failed get field " + fieldName + " in " + clazz.getName() + ".");
             return null;

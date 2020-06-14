@@ -8,14 +8,21 @@ import java.util.UUID;
 @Data
 public class User {
 
-    private final UUID uuid;
-    private final String lowercaseNickname;
+    private UUID uuid;
+    private String lowercaseNickname;
 
     private int rankPosition = 0;
     private int prestige = 0;
 
     public void increasePrestige() {
         prestige++;
+    }
+
+    public User() { }
+
+    public User(UUID uuid, String lowercaseNickname) {
+        this.uuid = uuid;
+        this.lowercaseNickname = lowercaseNickname;
     }
 
     @Override

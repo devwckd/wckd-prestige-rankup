@@ -30,8 +30,7 @@ public class RankUpCommand {
 
     @Command(
             name = "rankup",
-            inGameOnly = true,
-            async = true
+            inGameOnly = true
     )
     public void onRankupCommand(Execution execution) {
 

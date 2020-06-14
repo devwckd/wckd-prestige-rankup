@@ -32,8 +32,7 @@ public class PrestigeCommand {
 
     @Command(
             name = "prestige",
-            inGameOnly = true,
-            async = true
+            inGameOnly = true
     )
     public void onRankupCommand(Execution execution) {
 

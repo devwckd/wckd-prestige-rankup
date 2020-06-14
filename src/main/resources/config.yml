@@ -44,5 +44,5 @@ ranks_gui:
 
   completed_icon:
     name: "&a{pos} - {name}"
-      lore:
-        - "&acompleted"
+    lore:
+      - "&acompleted"

@@ -7,12 +7,12 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
 import me.devwckd.prestigerankup.adapter.CSToIsExtendedAdapter;
 import me.devwckd.prestigerankup.adapter.FileToRankAdapter;
-import me.devwckd.prestigerankup.command.PrestigeCommand;
-import me.devwckd.prestigerankup.command.RankUpCommand;
+import me.devwckd.prestigerankup.command.*;
 import me.devwckd.prestigerankup.entity.rank.Rank;
 import me.devwckd.prestigerankup.lifecycle.*;
 import me.devwckd.prestigerankup.listener.TrafficListener;
 import me.saiintbrisson.commands.CommandFrame;
+import me.saiintbrisson.inventory.InventoryFrame;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
@@ -59,6 +59,7 @@ public class RankUpPlugin extends BoilerplatePlugin {
     private void registerListeners() {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new TrafficListener(this), this);
+        new InventoryFrame(this).registerListener();
     }
 
     private void registerCommands() {
@@ -72,7 +73,10 @@ public class RankUpPlugin extends BoilerplatePlugin {
 
         commandFrame.registerCommands(
                 new RankUpCommand(this),
-                new PrestigeCommand(this)
+                new PrestigeCommand(this),
+                new RanksCommand(this),
+                new SetRankCommand(this),
+                new SetPrestigeCommand(this)
         );
     }
 

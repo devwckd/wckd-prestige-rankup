@@ -40,6 +40,7 @@ public class FileToRankAdapter implements ObjectAdapter<File, Rank> {
             return null;
         }
 
+        String name = configuration.getString("name", identifier);
         double price = configuration.getDouble("price", 0D);
 
         ItemStack iconStack = new ItemStack(Material.DIRT);
@@ -50,9 +51,11 @@ public class FileToRankAdapter implements ObjectAdapter<File, Rank> {
             iconStack = ADAPTER.adapt(iconSection, MemorySection.class, ItemStack.class);
         }
 
-        ConfigurationSection completedIconSection = configuration.getConfigurationSection("icon");
+        ConfigurationSection completedIconSection = configuration.getConfigurationSection("completed_icon");
         if(completedIconSection != null) {
             completedIconStack = ADAPTER.adapt(completedIconSection, MemorySection.class, ItemStack.class);
+        } else {
+            completedIconStack = iconStack;
         }
 
         List<String> commandsIn = configuration.getStringList("commands_in");
@@ -61,6 +64,7 @@ public class FileToRankAdapter implements ObjectAdapter<File, Rank> {
         return Rank.builder()
                 .position(position)
                 .id(identifier)
+                .name(name)
                 .price(price)
                 .icon(iconStack)
                 .completedIcon(completedIconStack)

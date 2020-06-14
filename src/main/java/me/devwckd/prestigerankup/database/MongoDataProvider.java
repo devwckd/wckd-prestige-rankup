@@ -8,7 +8,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
 import org.bson.Document;
+import org.bson.UuidRepresentation;
+import org.bson.codecs.UuidCodec;
+import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,11 +64,17 @@ public class MongoDataProvider {
 		}
 		
 		CodecRegistry pojoCodecRegistry = fromRegistries(
-			MongoClientSettings.getDefaultCodecRegistry()
+				MongoClientSettings.getDefaultCodecRegistry(),
+				CodecRegistries.fromProviders(
+						PojoCodecProvider.builder()
+								.automatic(true)
+								.build()
+				)
 		);
 		
 		MongoClientSettings settings = MongoClientSettings.builder()
 			.codecRegistry(pojoCodecRegistry)
+			.uuidRepresentation(UuidRepresentation.STANDARD)
 			.applyConnectionString(new ConnectionString(string.toString()))
 			.build();
 		
@@ -94,7 +104,8 @@ public class MongoDataProvider {
 	}
 	
 	public <T> MongoCollection<T> getCollection(String database, String collection, Class<T> clazz) {
-		return getDatabase(database).getCollection(collection, clazz).withCodecRegistry(codec);
+		MongoDatabase db = getDatabase(database);
+		return db.getCollection(collection, clazz).withCodecRegistry(codec);
 	}
 
 	public <T> MongoCollection<T> getCollection(String collection, Class<T> clazz) {

@@ -93,7 +93,7 @@
         <dependency>
             <groupId>com.github.SaiintBrisson</groupId>
             <artifactId>inventory-framework</artifactId>
-            <version>ddb94b51c7</version>
+            <version>9d81b48a25f0e36273de0e424af261baf301b6c3</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

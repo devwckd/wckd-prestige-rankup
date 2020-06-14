@@ -5,8 +5,8 @@ import lombok.Data;
 import me.devwckd.prestigerankup.RankUpPlugin;
 import me.devwckd.prestigerankup.entity.user.User;
 import me.devwckd.prestigerankup.entity.user.UserController;
-import me.saiintbrisson.inventory.paginator.PaginatedInvHolder;
 import me.saiintbrisson.inventory.paginator.PaginatedItem;
+import me.saiintbrisson.inventory.paginator.PaginatedViewHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +20,6 @@ import static me.devwckd.prestigerankup.util.StackUtils.applyIcon;
 @Builder
 public class Rank implements PaginatedItem {
 
-    private static final UserController USER_CONTROLLER = RankUpPlugin.getInstance().getUserLifecycle().getUserController();
     private static final double PRESTIGE_CONSTANT = RankUpPlugin.getInstance().getFileLifecycle().getConfiguration().getDouble("config.prestige_constant");
 
     private final int position;
@@ -62,17 +61,18 @@ public class Rank implements PaginatedItem {
 
     }
 
-    @Override
-    public ItemStack toItemStack(Player player, PaginatedInvHolder paginatedInvHolder) {
 
-        User user = USER_CONTROLLER.getByUUID(player.getUniqueId());
+    @Override
+    public ItemStack toItemStack(Player player, PaginatedViewHolder paginatedViewHolder) {
+
+        User user = RankUpPlugin.getInstance().getUserLifecycle().getUserController().getByUUID(player.getUniqueId());
         if(user == null)
             throw new NullPointerException("user is null!");
 
-        if(user.getRankPosition() <= position)
+        if(user.getRankPosition() >= position)
             return applyCompletedIcon(completedIcon, user, this);
         else
-            return applyIcon(completedIcon, user, this);
+            return applyIcon(icon, user, this);
 
     }
 

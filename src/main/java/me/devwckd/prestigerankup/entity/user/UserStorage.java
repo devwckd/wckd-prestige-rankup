@@ -21,7 +21,12 @@ public class UserStorage {
     }
 
     public User getByUUID(UUID uuid) {
-        return userCollection.find(eq("uuid", uuid)).first();
+        try {
+            return userCollection.find(eq("uuid", uuid)).first();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 
     public User getByLowercaseNickname(String lowercaseNickname) {

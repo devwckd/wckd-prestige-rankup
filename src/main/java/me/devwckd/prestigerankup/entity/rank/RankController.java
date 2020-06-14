@@ -16,11 +16,21 @@ public class RankController {
     }
 
     public Rank getByPosition(int position) {
-        return ranks.get(position);
+        try {
+            return ranks.get(position);
+        } catch (Exception $) {
+            return null;
+        }
     }
 
     public Rank getByID(String id) {
-        throw new NotImplementedException();
+        for (int i = 0; i < ranks.size(); i++) {
+            Rank rank = ranks.get(i);
+            if(rank == null) continue;
+            if(rank.getId().equalsIgnoreCase(id))
+                return rank;
+        }
+        return null;
     }
 
     public void insert(Rank rank) {

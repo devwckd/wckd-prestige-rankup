@@ -26,7 +26,11 @@ public class UserController {
     }
 
     public User getByLowercaseNickname(String lowercaseNickname) {
-        throw new NotImplementedException();
+        for (User user : users.values()) {
+            if(user.getLowercaseNickname().equalsIgnoreCase(lowercaseNickname))
+                return user;
+        }
+        return null;
     }
 
     public void loadToMemory(Player player) {
@@ -35,7 +39,6 @@ public class UserController {
         if(getByUUID(uuid) != null) {
             removeFromMemory(player);
         }
-
         User user = userStorage.getByUUID(uuid);
         if(user == null) {
             user = new User(uuid, player.getName().toLowerCase());

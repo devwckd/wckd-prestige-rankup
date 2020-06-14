@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 
 public class TrafficListener implements Listener {
@@ -23,17 +24,15 @@ public class TrafficListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        executorService.submit(() -> {
+        CompletableFuture.runAsync(() -> {
             userController.loadToMemory(event.getPlayer());
-        });
+        }, executorService);
     }
 
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        executorService.submit(() -> {
-            userController.removeFromMemory(event.getPlayer());
-        });
+        executorService.submit(() -> userController.removeFromMemory(event.getPlayer()));
     }
 
 

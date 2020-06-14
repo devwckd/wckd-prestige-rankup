@@ -4,10 +4,10 @@ import lombok.Getter;
 import lombok.NonNull;
 import me.devwckd.prestigerankup.RankUpPlugin;
 import me.devwckd.prestigerankup.entity.rank.Rank;
-import me.saiintbrisson.inventory.paginator.PaginatedInv;
+import me.saiintbrisson.inventory.paginator.PaginatedView;
 
 @Getter
-public class RanksInventory extends PaginatedInv<Rank> {
+public class RanksInventory extends PaginatedView<Rank> {
 
     public static final RankUpPlugin rankUpPlugin = RankUpPlugin.getInstance();
 
